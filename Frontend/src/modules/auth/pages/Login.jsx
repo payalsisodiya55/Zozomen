@@ -127,7 +127,7 @@ export default function UnifiedOTPFastLogin() {
 
       setAuthData("user", accessToken, user, refreshToken)
       toast.success("Login successful!")
-      navigate("/user/auth/portal", { replace: true })
+      navigate("/", { replace: true })
     } catch (err) {
       const status = err?.response?.status
       let msg = err?.response?.data?.message || err?.response?.data?.error || err?.message || "Invalid OTP. Please try again."
