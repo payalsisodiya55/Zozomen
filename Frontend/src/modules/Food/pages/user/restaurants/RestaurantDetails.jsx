@@ -2474,7 +2474,7 @@ function RestaurantDetailsContent() {
                                   animate={{ opacity: 1, scale: 1 }}
                                   className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border font-bold px-4 py-1.5 rounded-lg shadow-md flex items-center gap-1 ${shouldShowGrayscale
                                     ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
-                                    : 'border-[#E2281B] text-[#E2281B] hover:bg-red-50'
+                                    : 'border-[#00a63e] text-[#00a63e] hover:bg-[#00a63e]/10'
                                     }`}
                                 >
                                   <button
@@ -2485,7 +2485,7 @@ function RestaurantDetailsContent() {
                                       }
                                     }}
                                     disabled={shouldShowGrayscale}
-                                    className={shouldShowGrayscale ? 'text-gray-400 cursor-not-allowed' : 'text-[#E2281B] hover:text-[#E2281B]'}
+                                    className={shouldShowGrayscale ? 'text-gray-400 cursor-not-allowed' : 'text-[#00a63e] hover:text-[#00a63e]'}
                                   >
                                     <Minus size={14} />
                                   </button>
@@ -2498,7 +2498,7 @@ function RestaurantDetailsContent() {
                                       }
                                     }}
                                     disabled={shouldShowGrayscale}
-                                    className={shouldShowGrayscale ? 'text-gray-400 cursor-not-allowed' : 'text-[#E2281B] hover:text-[#E2281B]'}
+                                    className={shouldShowGrayscale ? 'text-gray-400 cursor-not-allowed' : 'text-[#00a63e] hover:text-[#00a63e]'}
                                   >
                                     <Plus size={14} className="stroke-[3px]" />
                                   </button>
@@ -2518,7 +2518,7 @@ function RestaurantDetailsContent() {
                                   disabled={shouldShowGrayscale}
                                   className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border font-bold px-6 py-1.5 rounded-lg shadow-md flex items-center gap-1 transition-colors ${shouldShowGrayscale
                                     ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
-                                    : 'border-[#E2281B] text-[#E2281B] hover:bg-red-50'
+                                    : 'border-[#00a63e] text-[#00a63e] hover:bg-[#00a63e]/10'
                                     }`}
                                 >
                                   ADD <Plus size={14} className="stroke-[3px]" />
@@ -2695,7 +2695,7 @@ function RestaurantDetailsContent() {
                                             animate={{ opacity: 1, scale: 1 }}
                                             className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border font-bold px-4 py-1.5 rounded-lg shadow-md flex items-center gap-1 ${shouldShowGrayscale
                                               ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
-                                              : 'border-[#E2281B] text-[#E2281B] hover:bg-red-50'
+                                              : 'border-[#00a63e] text-[#00a63e] hover:bg-[#00a63e]/10'
                                               }`}
                                           >
                                             <button
@@ -2706,7 +2706,7 @@ function RestaurantDetailsContent() {
                                                 }
                                               }}
                                               disabled={shouldShowGrayscale}
-                                              className={shouldShowGrayscale ? 'text-gray-400 cursor-not-allowed' : 'text-[#E2281B] hover:text-[#E2281B]'}
+                                              className={shouldShowGrayscale ? 'text-gray-400 cursor-not-allowed' : 'text-[#00a63e] hover:text-[#00a63e]'}
                                             >
                                               <Minus size={14} />
                                             </button>
@@ -2719,7 +2719,7 @@ function RestaurantDetailsContent() {
                                                 }
                                               }}
                                               disabled={shouldShowGrayscale}
-                                              className={shouldShowGrayscale ? 'text-gray-400 cursor-not-allowed' : 'text-[#E2281B] hover:text-[#E2281B]'}
+                                              className={shouldShowGrayscale ? 'text-gray-400 cursor-not-allowed' : 'text-[#00a63e] hover:text-[#00a63e]'}
                                             >
                                               <Plus size={14} className="stroke-[3px]" />
                                             </button>
@@ -2739,7 +2739,7 @@ function RestaurantDetailsContent() {
                                             disabled={shouldShowGrayscale}
                                             className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border font-bold px-6 py-1.5 rounded-lg shadow-md flex items-center gap-1 transition-colors ${shouldShowGrayscale
                                               ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
-                                              : 'border-[#E2281B] text-[#E2281B] hover:bg-red-50'
+                                              : 'border-[#00a63e] text-[#00a63e] hover:bg-[#00a63e]/10'
                                               }`}
                                           >
                                             ADD <Plus size={14} className="stroke-[3px]" />

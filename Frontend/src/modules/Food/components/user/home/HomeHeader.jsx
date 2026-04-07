@@ -187,7 +187,7 @@ export default function HomeHeader({
       {showBanner && isFood && bannerContent && (
         <div className="absolute inset-0 z-0 flex justify-center overflow-hidden">
           {bannerContent}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#7f2d25]/88 via-[#7f2d25]/18 via-[28%] to-black/22" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#c93a31]/32 via-[#ffdad7]/14 via-[28%] to-black/16" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/18 via-transparent to-black/16" />
         </div>
       )}
@@ -222,7 +222,7 @@ export default function HomeHeader({
             className={`rounded-none border-none px-3 pt-2 pb-2 ${
               useSolidHeader
                 ? "bg-white shadow-[0_8px_22px_rgba(15,23,42,0.06)]"
-                : "bg-[linear-gradient(180deg,rgba(84,20,15,0.46),rgba(22,10,8,0.26))] shadow-[0_16px_34px_rgba(0,0,0,0.18)] backdrop-blur-[4px]"
+                : "bg-[linear-gradient(180deg,rgba(201,58,49,0.24),rgba(255,230,227,0.16))] shadow-[0_16px_34px_rgba(0,0,0,0.18)] backdrop-blur-[4px]"
             }`}
           >
           <div className="flex items-center justify-between mb-3">

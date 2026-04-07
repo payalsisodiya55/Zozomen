@@ -54,6 +54,19 @@ const debugLog = (...args) => { };
 const debugWarn = (...args) => { };
 const debugError = (...args) => { };
 const USER_SESSION_PREFERENCE_KEYS = ["userVegMode", "food-under-250-filters"];
+const DEFAULT_PROFILE_AVATAR = `data:image/svg+xml;utf8,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+    <defs>
+      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#dbeafe" />
+        <stop offset="100%" stop-color="#bfdbfe" />
+      </linearGradient>
+    </defs>
+    <rect width="96" height="96" rx="48" fill="url(#bg)" />
+    <circle cx="48" cy="36" r="16" fill="#ffffff" />
+    <path d="M24 78c4-13 16-20 24-20s20 7 24 20" fill="#ffffff" />
+  </svg>`,
+)}`;
 
 import { registerWebPushForCurrentModule } from "@food/utils/firebaseMessaging";
 
@@ -113,10 +126,12 @@ export default function Profile() {
   }, [appearance]);
 
   // Get first letter of name for avatar
-  const avatarInitial =
-    userProfile?.name?.charAt(0)?.toUpperCase() ||
-    userProfile?.phone?.charAt(1)?.toUpperCase() ||
-    "U";
+  const hasName =
+    typeof userProfile?.name === "string" && userProfile.name.trim() !== "";
+  const avatarInitial = userProfile?.name?.charAt(0)?.toUpperCase() || "U";
+  const avatarImageSrc = hasName
+    ? userProfile?.profileImage?.trim() || undefined
+    : DEFAULT_PROFILE_AVATAR;
   const displayName = userProfile?.name || userProfile?.phone || "User";
   // Only show email if it exists and is valid, otherwise show phone or "Not available"
   const hasValidEmail =
@@ -429,17 +444,7 @@ export default function Profile() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ duration: 0.3, type: "spring", stiffness: 300 }}>
                 <Avatar className="h-16 w-16 bg-blue-300 border-0">
-                  {userProfile?.profileImage && (
-                    <AvatarImage
-                      src={
-                        userProfile.profileImage &&
-                          userProfile.profileImage.trim()
-                          ? userProfile.profileImage
-                          : undefined
-                      }
-                      alt={displayName}
-                    />
-                  )}
+                  <AvatarImage src={avatarImageSrc} alt={displayName} />
                   <AvatarFallback className="bg-blue-300 text-white text-2xl font-semibold">
                     {avatarInitial}
                   </AvatarFallback>
