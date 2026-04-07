@@ -8,6 +8,7 @@ import { useCompanyName } from "@food/hooks/useCompanyName";
 import { useProfile } from "@food/context/ProfileContext";
 import { toast } from "sonner";
 import { userAPI } from "@food/api";
+import { RED } from "@food/constants/color";
 
 const statusMeta = {
   credited: {
@@ -137,7 +138,7 @@ export default function ReferEarn() {
             <div className="mt-3 grid grid-cols-2 gap-2">
               <div className="rounded-xl bg-gray-50 dark:bg-gray-800/50 p-3">
                 <p className="text-[11px] text-gray-500 dark:text-gray-400">Reward per invite</p>
-                <p className="text-lg font-bold text-[#EB590E]">{"\u20B9"}{stats.rewardAmount}</p>
+                <p className="text-lg font-bold" style={{ color: RED }}>{"\u20B9"}{stats.rewardAmount}</p>
               </div>
               <div className="rounded-xl bg-gray-50 dark:bg-gray-800/50 p-3">
                 <p className="text-[11px] text-gray-500 dark:text-gray-400">Referral earnings</p>
@@ -150,7 +151,8 @@ export default function ReferEarn() {
               type="button"
               onClick={handleShare}
               disabled={!referralLink}
-              className="w-full mt-3 h-11 rounded-xl bg-[#EB590E] hover:bg-[#d84f0a]"
+              className={`w-full mt-3 h-11 rounded-xl text-white hover:opacity-90`}
+              style={{ backgroundColor: RED }}
             >
               <Share2 className="h-4 w-4 mr-2" />
               Share Invite
