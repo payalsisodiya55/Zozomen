@@ -872,7 +872,7 @@ export default function Profile() {
             </h3>
           </div>
           <div className="space-y-2">
-            <Link to="/user/about" className="block">
+            <Link to="/user/profile/about" className="block">
               <motion.div
                 whileHover={{ x: 4, scale: 1.01 }}
                 transition={{ duration: 0.2, type: "spring", stiffness: 300 }}>
@@ -899,7 +899,7 @@ export default function Profile() {
               </motion.div>
             </Link>
 
-            <Link to="/user/feedback" className="block">
+            <Link to="/user/profile/support" className="block">
               <motion.div
                 whileHover={{ x: 4, scale: 1.01 }}
                 transition={{ duration: 0.2, type: "spring", stiffness: 300 }}>
@@ -926,7 +926,7 @@ export default function Profile() {
               </motion.div>
             </Link>
 
-            <Link to="/user/report" className="block">
+            <Link to="/user/profile/report-safety-emergency" className="block">
               <motion.div
                 whileHover={{ x: 4, scale: 1.01 }}
                 transition={{ duration: 0.2, type: "spring", stiffness: 300 }}>
@@ -953,7 +953,7 @@ export default function Profile() {
               </motion.div>
             </Link>
 
-            <Link to="/user/settings" className="block">
+            <Link to="/user/profile/edit" className="block">
               <motion.div
                 whileHover={{ x: 4, scale: 1.01 }}
                 transition={{ duration: 0.2, type: "spring", stiffness: 300 }}>

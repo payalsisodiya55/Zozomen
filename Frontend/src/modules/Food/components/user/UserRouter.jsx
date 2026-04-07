@@ -252,6 +252,39 @@ export default function UserRouter() {
             }
           />
 
+          {/* Support & Legal - Direct Routes */}
+          <Route
+            path="about"
+            element={
+              <ProtectedRoute requiredRole="user" loginPath="/user/auth/login">
+                <About />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="report"
+            element={
+              <ProtectedRoute requiredRole="user" loginPath="/user/auth/login">
+                <ReportSafetyEmergency />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="feedback"
+            element={
+              <ProtectedRoute requiredRole="user" loginPath="/user/auth/login">
+                <Support />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="settings"
+            element={
+              <ProtectedRoute requiredRole="user" loginPath="/user/auth/login">
+                <EditProfile />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="profile/report-safety-emergency"
             element={
