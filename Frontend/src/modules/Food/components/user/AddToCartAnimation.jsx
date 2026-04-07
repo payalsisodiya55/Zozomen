@@ -338,7 +338,7 @@ export default function AddToCartAnimation({
       // Step 1: Scale up with glow
       tl.to(linkRef.current, {
         scale: 1.08,
-        boxShadow: '0 10px 25px rgba(0, 166, 62, 0.4)',
+        boxShadow: '0 10px 25px rgba(240, 36, 29, 0.4)',
         duration: 0.15,
         ease: 'power2.out',
         transformOrigin: 'center center',
@@ -347,7 +347,7 @@ export default function AddToCartAnimation({
         // Step 2: Bounce back
         .to(linkRef.current, {
           scale: 1.0,
-          boxShadow: '0 4px 12px rgba(0, 166, 62, 0.3)',
+          boxShadow: '0 4px 12px rgba(240, 36, 29, 0.3)',
           duration: 0.2,
           ease: 'power2.inOut',
         })
@@ -454,7 +454,7 @@ export default function AddToCartAnimation({
                 debugLog('View cart clicked, navigating to:', linkTo);
                 navigate(linkTo);
               }}
-              className={`bg-[#00a63e] text-white rounded-full shadow-xl shadow-green-900/30 px-3 py-2 flex items-center gap-2 hover:bg-[#00a63e]/90 transition-all duration-300 pointer-events-auto border border-green-800/30 backdrop-blur-sm cursor-pointer ${pillClassName}`}
+              className={`bg-[#f0241d] text-white rounded-full shadow-xl shadow-red-900/30 px-3 py-2 flex items-center gap-2 hover:bg-[#f0241d]/90 transition-all duration-300 pointer-events-auto border border-red-800/30 backdrop-blur-sm cursor-pointer ${pillClassName}`}
             >
               {/* Left: Product thumbnails */}
               <div className="flex items-center -space-x-4">
