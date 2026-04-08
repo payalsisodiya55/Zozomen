@@ -6,6 +6,7 @@ import { Button } from "@food/components/ui/button"
 import { Card, CardContent } from "@food/components/ui/card"
 import { Badge } from "@food/components/ui/badge"
 import useNotificationInbox from "@food/hooks/useNotificationInbox"
+import { RED } from "@food/constants/color"
 
 // Initial mock notification data (fallback if localStorage is empty)
 const DEFAULT_NOTIFICATIONS = [
@@ -18,7 +19,7 @@ const DEFAULT_NOTIFICATIONS = [
     timestamp: Date.now() - 120000,
     read: false,
     icon: "CheckCircle2",
-    iconColor: "text-[#EB590E]"
+    iconColor: `text-[${RED}]`
   },
   {
     id: "2",
@@ -29,7 +30,7 @@ const DEFAULT_NOTIFICATIONS = [
     timestamp: Date.now() - 3600000,
     read: false,
     icon: "Tag",
-    iconColor: "text-[#EB590E]"
+    iconColor: `text-[${RED}]`
   }
 ]
 
@@ -76,7 +77,7 @@ export default function Notifications() {
         timestamp: Date.now(),
         read: false,
         icon: isCancelled ? "AlertCircle" : "CheckCircle2",
-        iconColor: isCancelled ? "text-red-600" : "text-[#EB590E]"
+        iconColor: isCancelled ? "text-red-600" : `text-[${RED}]`
       }
       setNotificationsList(prev => [newNotification, ...prev])
     }
@@ -92,7 +93,7 @@ export default function Notifications() {
         timestamp: Date.now(),
         read: false,
         icon: "AlertCircle",
-        iconColor: "text-orange-600"
+        iconColor: `text-[${RED}]`
       }
       setNotificationsList(prev => [newNotification, ...prev])
     }
@@ -172,10 +173,10 @@ export default function Notifications() {
             </Button>
           </Link>
           <div className="flex items-center gap-2 sm:gap-3 flex-1">
-            <Bell className="h-5 w-5 sm:h-6 sm:w-6 text-[#EB590E] fill-[#EB590E]" />
+            <Bell className="h-5 w-5 sm:h-6 sm:w-6" style={{ color: RED, fill: RED }} />
             <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Notifications</h1>
             {unreadCount > 0 && (
-              <Badge className="bg-[#EB590E] text-white text-xs md:text-sm">
+              <Badge className="text-white text-xs md:text-sm" style={{ backgroundColor: RED }}>
                 {unreadCount}
               </Badge>
             )}
@@ -206,7 +207,7 @@ export default function Notifications() {
               >
                 {/* Unread Dot - Top Right */}
                 {!notification.read && (
-                  <div className="absolute top-2 right-2 w-2.5 h-2.5 md:w-3 md:h-3 bg-[#EB590E] rounded-full" />
+                  <div className="absolute top-2 right-2 w-2.5 h-2.5 md:w-3 md:h-3 rounded-full" style={{ backgroundColor: RED }} />
                 )}
 
                 <CardContent className="p-3 md:p-4 lg:p-5">
@@ -215,7 +216,7 @@ export default function Notifications() {
                     <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center ${notification.type === "order" ? "bg-green-100 dark:bg-green-900/40" :
                         notification.type === "offer" ? "bg-red-100 dark:bg-red-900/40" :
                           notification.type === "promotion" ? "bg-blue-100 dark:bg-blue-900/40" :
-                            "bg-orange-100 dark:bg-orange-900/40"
+                            "bg-red-100/50 dark:bg-red-900/40"
                       }`}>
                       <Icon className={`h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 ${notification.iconColor}`} />
                     </div>

@@ -268,7 +268,7 @@ export default function HomeHeader({
                     )}
                   </button>
                 </PopoverTrigger>
-                <PopoverContent className="w-80 p-0 overflow-hidden border-none shadow-2xl rounded-2xl mt-2" align="end">
+                <PopoverContent className="w-80 p-0 overflow-hidden border-none shadow-2xl rounded-2xl mt-2 z-[100]" align="end">
                   <div className="bg-white">
                     <div className="p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
                       <h3 className="font-bold text-gray-900 flex items-center gap-2">
