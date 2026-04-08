@@ -891,6 +891,7 @@ export default function Under250() {
           placeholders={placeholders}
           vegMode={false}
           onVegModeChange={() => {}}
+          showVegMode={false}
           showBanner={false}
           hasScrolledPastBanner={hasScrolledPastBanner}
         />
@@ -911,6 +912,7 @@ export default function Under250() {
           placeholders={placeholders}
           vegMode={false}
           onVegModeChange={() => {}}
+          showVegMode={false}
           showHeaderContent={false}
           bannerContent={
             bannerImages.length > 0 ? (

@@ -52,8 +52,8 @@ export default function DesktopNavbar({ showLogo = true }) {
 
     // Check active routes - support both /user/* and /* paths
     const isQuick = location.pathname.endsWith("/quick")
-    const isDining = location.pathname === "/food/user/dining" || location.pathname === "/food/dining"
-    const isUnder250 = location.pathname === "/food/user/under-250" || location.pathname === "/food/under-250"
+    const isDining = location.pathname === "/food/user/dining" || location.pathname === "/food/dining" || location.pathname === "/user/dining" || location.pathname === "/dining"
+    const isUnder250 = location.pathname === "/food/user/under-250" || location.pathname === "/food/under-250" || location.pathname === "/user/under-250" || location.pathname === "/under-250"
     const isProfile = location.pathname.startsWith("/food/user/profile") || location.pathname.startsWith("/food/profile")
     const isDelivery = !isDining && !isUnder250 && !isProfile && !isQuick && (location.pathname === "/food/user" || location.pathname === "/food" || (location.pathname.startsWith("/food/user") && !location.pathname.includes("/dining") && !location.pathname.includes("/under-250") && !location.pathname.includes("/profile")))
     const isBannerRoute =
@@ -248,17 +248,19 @@ export default function DesktopNavbar({ showLogo = true }) {
                             </div>
 
                             {/* VEG MODE Toggle - Moved here */}
-                            <div className="flex items-center gap-2 flex-shrink-0">
-                                <div className="flex flex-col items-end">
-                                    <span className="text-[10px] font-bold text-gray-700 dark:text-gray-300 leading-none">VEG</span>
-                                    <span className="text-[8px] font-bold text-gray-500 dark:text-gray-400 leading-none">MODE</span>
+                            {!isDining && !isUnder250 && (
+                                <div className="flex items-center gap-2 flex-shrink-0">
+                                    <div className="flex flex-col items-end">
+                                        <span className="text-[10px] font-bold text-gray-700 dark:text-gray-300 leading-none">VEG</span>
+                                        <span className="text-[8px] font-bold text-gray-500 dark:text-gray-400 leading-none">MODE</span>
+                                    </div>
+                                    <Switch
+                                        checked={vegMode}
+                                        onCheckedChange={setVegMode}
+                                        className="data-[state=checked]:bg-green-600 data-[state=unchecked]:bg-gray-300 dark:data-[state=unchecked]:bg-gray-600 h-5 w-9"
+                                    />
                                 </div>
-                                <Switch
-                                    checked={vegMode}
-                                    onCheckedChange={setVegMode}
-                                    className="data-[state=checked]:bg-green-600 data-[state=unchecked]:bg-gray-300 dark:data-[state=unchecked]:bg-gray-600 h-5 w-9"
-                                />
-                            </div>
+                            )}
                         </div>
 
                         {/* Right: Wallet and Cart Icons */}

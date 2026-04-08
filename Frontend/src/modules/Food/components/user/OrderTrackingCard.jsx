@@ -2,16 +2,17 @@ import { useState, useEffect, useMemo, useRef, useCallback, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { UtensilsCrossed, ChevronRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { RED } from "@food/constants/color";
 
 const CookingAnimation = memo(() => (
-  <div className="relative w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 border border-orange-100 overflow-visible shadow-[0_4px_15px_rgba(235,89,14,0.15)] shrink-0">
+  <div className="relative w-12 h-12 flex items-center justify-center rounded-xl bg-red-50 border border-red-100 overflow-visible shadow-[0_4px_15px_rgba(226,40,27,0.15)] shrink-0">
     <div className="absolute -top-3 flex gap-1.5">
-      <motion.div animate={{ opacity: [0, 0.8, 0], y: [0, -8, -12], scale: [0.8, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0, ease: "easeOut" }} className="w-1.5 h-3 bg-orange-400/60 rounded-full blur-[1px]" />
-      <motion.div animate={{ opacity: [0, 0.8, 0], y: [0, -10, -15], scale: [0.8, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.5, ease: "easeOut" }} className="w-1.5 h-3 bg-orange-400/60 rounded-full blur-[1px]" />
-      <motion.div animate={{ opacity: [0, 0.8, 0], y: [0, -8, -12], scale: [0.8, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 1, ease: "easeOut" }} className="w-1.5 h-3 bg-orange-400/60 rounded-full blur-[1px]" />
+      <motion.div animate={{ opacity: [0, 0.8, 0], y: [0, -8, -12], scale: [0.8, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0, ease: "easeOut" }} className="w-1.5 h-3 bg-red-400/60 rounded-full blur-[1px]" />
+      <motion.div animate={{ opacity: [0, 0.8, 0], y: [0, -10, -15], scale: [0.8, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.5, ease: "easeOut" }} className="w-1.5 h-3 bg-red-400/60 rounded-full blur-[1px]" />
+      <motion.div animate={{ opacity: [0, 0.8, 0], y: [0, -8, -12], scale: [0.8, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 1, ease: "easeOut" }} className="w-1.5 h-3 bg-red-400/60 rounded-full blur-[1px]" />
     </div>
     <motion.div animate={{ rotate: [-2, 2, -2] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 mt-1">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-500 drop-shadow-sm">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: RED }} className="drop-shadow-sm">
         {/* Cooker Body */}
         <path d="M6 10h12v6a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4v-6z" />
         {/* Lid Rim */}
@@ -27,7 +28,7 @@ const CookingAnimation = memo(() => (
     </motion.div>
     {/* Flame below */}
     <motion.div animate={{ opacity: [0.4, 0.8, 0.4], scaleX: [0.8, 1.2, 0.8] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 w-full flex justify-center z-0">
-      <div className="w-4 h-1 bg-orange-500 blur-[2px] rounded-full" />
+      <div className="w-4 h-1 bg-red-500 blur-[2px] rounded-full" />
     </motion.div>
   </div>
 ));
@@ -365,14 +366,14 @@ function OrderTrackingCardInner({ hasBottomNav = true }) {
               `/food/user/orders/${activeOrder.id || activeOrder._id || activeOrder.orderId}`,
             )
           }
-          className="relative bg-white/95 backdrop-blur-xl rounded-[20px] p-4 shadow-[0_8px_30px_rgba(235,89,14,0.15)] border border-orange-100/60 overflow-visible cursor-pointer group"
+          className="relative bg-white/95 backdrop-blur-xl rounded-[20px] p-4 shadow-[0_8px_30px_rgba(226,40,27,0.15)] border border-red-100/60 overflow-visible cursor-pointer group"
         >
           {/* Subtle gradient background mesh */}
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 via-white/40 to-white/80 opacity-60 pointer-events-none rounded-[20px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-red-50/50 via-white/40 to-white/80 opacity-60 pointer-events-none rounded-[20px]" />
           
           <button 
              onClick={(e) => { e.stopPropagation(); setDismissedKey(currentOrderKey); }}
-             className="absolute top-2 right-2 p-1.5 rounded-full bg-orange-50/80 text-orange-400 hover:text-orange-600 hover:bg-orange-100/80 transition-colors z-20 shadow-sm"
+             className="absolute top-2 right-2 p-1.5 rounded-full bg-red-50/80 text-red-400 hover:text-red-600 hover:bg-red-100/80 transition-colors z-20 shadow-sm"
           >
             <X className="w-3.5 h-3.5 pointer-events-none" />
           </button>
@@ -384,11 +385,14 @@ function OrderTrackingCardInner({ hasBottomNav = true }) {
               <p className="text-gray-900 font-bold text-base md:text-lg truncate tracking-tight">{restaurantName}</p>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <p className="text-gray-500 font-medium text-xs md:text-sm truncate">{statusText}</p>
-                <ChevronRight className="w-3.5 h-3.5 text-orange-500 shrink-0 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight style={{ color: RED }} className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#EB590E] to-[#D94E0A] shadow-lg shadow-orange-500/20 rounded-xl px-4 py-2 shrink-0 flex flex-col items-center justify-center border border-orange-200">
+            <div 
+              style={{ background: `linear-gradient(to bottom right, ${RED}, #C41E15)` }}
+              className="shadow-lg shadow-red-500/20 rounded-xl px-4 py-2 shrink-0 flex flex-col items-center justify-center border border-red-200"
+            >
               <p className="text-orange-50 text-[10px] font-bold uppercase tracking-wider opacity-95 leading-tight mb-[2px]">
                 arriving in
               </p>

@@ -1060,7 +1060,7 @@ export default function Profile() {
               </button>
             </div>
             <Button
-              className="w-full mt-6 h-12 rounded-xl text-base font-bold bg-black dark:bg-white dark:text-black hover:opacity-90"
+              className="w-full mt-6 h-12 rounded-xl text-base font-bold bg-black text-white dark:bg-white dark:text-black hover:opacity-90"
               onClick={() => setVegModeOpen(false)}>
               Done
             </Button>
@@ -1105,7 +1105,7 @@ export default function Profile() {
               </button>
             </div>
             <Button
-              className="w-full mt-6 h-12 rounded-xl text-base font-bold bg-black dark:bg-white dark:text-black hover:opacity-90"
+              className="w-full mt-6 h-12 rounded-xl text-base font-bold bg-black text-white dark:bg-white dark:text-black hover:opacity-90"
               onClick={() => setAppearanceOpen(false)}>
               Apply changes
             </Button>

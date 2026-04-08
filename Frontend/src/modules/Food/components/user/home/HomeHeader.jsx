@@ -79,6 +79,7 @@ export default function HomeHeader({
   onVegModeChange,
   bannerContent,
   quickThemeColor,
+  showVegMode = true,
   showBanner = true,
   showHeaderContent = true,
   hasScrolledPastBanner = false,
@@ -365,7 +366,7 @@ export default function HomeHeader({
             </div>
           </div>
 
-          {isFood ? (
+          {isFood && showVegMode ? (
             <div
               onClick={() => onVegModeChange?.(!vegMode)}
               className="h-[46px] min-w-[54px] px-1 flex flex-col items-center justify-center cursor-pointer"
@@ -380,12 +381,14 @@ export default function HomeHeader({
               </div>
             </div>
           ) : (
-            <button
-              type="button"
-              className="rounded-[16px] h-[52px] w-[52px] flex items-center justify-center shadow-xl bg-white"
-            >
-              <Bookmark className="h-[22px] w-[22px]" style={{ color: theme.accent }} />
-            </button>
+            !isFood && (
+              <button
+                type="button"
+                className="rounded-[16px] h-[52px] w-[52px] flex items-center justify-center shadow-xl bg-white"
+              >
+                <Bookmark className="h-[22px] w-[22px]" style={{ color: theme.accent }} />
+              </button>
+            )
           )}
           </div>
           </div>

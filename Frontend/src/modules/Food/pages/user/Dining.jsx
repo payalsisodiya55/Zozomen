@@ -541,6 +541,7 @@ export default function Dining() {
           placeholders={placeholders}
           vegMode={false}
           onVegModeChange={() => {}}
+          showVegMode={false}
           showBanner={false}
           hasScrolledPastBanner={hasScrolledPastBanner}
         />
@@ -561,6 +562,7 @@ export default function Dining() {
           placeholders={placeholders}
           vegMode={false}
           onVegModeChange={() => {}}
+          showVegMode={false}
           showHeaderContent={false}
           bannerContent={
             diningHeroBanners.length > 0 ? (

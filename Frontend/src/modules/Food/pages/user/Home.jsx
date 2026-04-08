@@ -3518,9 +3518,11 @@ export default function Home() {
                       <div
                         className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-all ${
                           vegModeOption === "all"
-                            ? "border-green-600 dark:border-green-500 bg-green-600 dark:bg-green-500"
+                            ? ""
                             : "border-gray-300 dark:border-gray-600 bg-white dark:bg-[#2a2a2a]"
-                        }`}>
+                        }`}
+                        style={vegModeOption === "all" ? { borderColor: RED, backgroundColor: RED } : {}}
+                      >
                         {vegModeOption === "all" && (
                           <div className="w-1.5 h-1.5 rounded-full bg-white dark:bg-white" />
                         )}
@@ -3547,9 +3549,11 @@ export default function Home() {
                       <div
                         className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-all ${
                           vegModeOption === "pure-veg"
-                            ? "border-green-600 dark:border-green-500 bg-green-600 dark:bg-green-500"
+                            ? ""
                             : "border-gray-300 dark:border-gray-600 bg-white dark:bg-[#2a2a2a]"
-                        }`}>
+                        }`}
+                        style={vegModeOption === "pure-veg" ? { borderColor: RED, backgroundColor: RED } : {}}
+                      >
                         {vegModeOption === "pure-veg" && (
                           <div className="w-1.5 h-1.5 rounded-full bg-white dark:bg-white" />
                         )}
@@ -3574,7 +3578,8 @@ export default function Home() {
                       setIsApplyingVegMode(false);
                     }, 2000);
                   }}
-                  className="w-full bg-[#EB590E] text-white font-semibold py-2.5 rounded-xl hover:bg-[#D94F0C] transition-colors mb-2 text-sm">
+                  style={{ backgroundColor: RED }}
+                  className="w-full text-white font-semibold py-2.5 rounded-xl transition-colors mb-2 text-sm opacity-90 hover:opacity-100">
                   Apply
                 </button>
               </motion.div>
