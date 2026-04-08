@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ShieldCheck } from "lucide-react"
 import { Button } from "@food/components/ui/button"
 import { restaurantAPI } from "@food/api"
-import { useCompanyName } from "@food/hooks/useCompanyName"
+import zozomenLogo from "@/assets/zozomenLogo.png"
 
 const DEFAULT_COUNTRY_CODE = "+91"
 const countryCodes = [
@@ -11,7 +10,6 @@ const countryCodes = [
 ]
 
 export default function RestaurantLogin() {
-  const companyName = useCompanyName()
   const navigate = useNavigate()
   const phoneInputRef = useRef(null)
   const [formData, setFormData] = useState(() => {
@@ -127,19 +125,19 @@ export default function RestaurantLogin() {
 
       <div className="flex-1 flex flex-col items-center px-4 sm:px-8 -mt-12 sm:-mt-16 z-10 overflow-hidden">
         <div className="w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-full shadow-xl flex items-center justify-center border-4 border-slate-50 mb-4 sm:mb-6">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-[#ef4f5f] rounded-2xl mx-auto flex items-center justify-center transform rotate-12 shadow-lg mb-1">
-              <ShieldCheck className="w-8 h-8 text-white -rotate-12" />
-            </div>
-          </div>
+          <img
+            src={zozomenLogo}
+            alt="Zozomen logo"
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+          />
         </div>
 
         <div className="text-center space-y-1.5 sm:space-y-2 mb-6 sm:mb-10">
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight lowercase">
-            {companyName}
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            Zozomen
           </h1>
           <p className="text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-widest">
-            Partner Login
+            Restaurant Login
           </p>
         </div>
 
@@ -216,7 +214,7 @@ export default function RestaurantLogin() {
 
       <div className={`pb-8 text-center ${keyboardInset ? "hidden" : ""}`}>
           <p className="text-[10px] font-black text-slate-300 tracking-[0.2em] uppercase">
-            &copy; {new Date().getFullYear()} {companyName.toUpperCase()} PARTNER
+            &copy; {new Date().getFullYear()} ZOZOMEN PARTNER
           </p>
       </div>
     </div>

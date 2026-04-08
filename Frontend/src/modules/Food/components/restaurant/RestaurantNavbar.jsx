@@ -4,6 +4,7 @@ import { Search, Menu, ChevronRight, MapPin, X, Bell } from "lucide-react"
 import { restaurantAPI } from "@food/api"
 import { getCachedSettings, loadBusinessSettings } from "@food/utils/businessSettings"
 import useNotificationInbox from "@food/hooks/useNotificationInbox"
+import { RESTAURANT_THEME } from "@food/constants/restaurantTheme"
 
 const debugLog = (...args) => {}
 const debugWarn = (...args) => {}
@@ -356,21 +357,35 @@ export default function RestaurantNavbar({
             onClick={handleStatusClick}
             className={`flex items-center gap-1.5 px-2 py-1 border rounded-full hover:opacity-80 transition-all ${
               status === "Online" 
-                ? "bg-green-50 border-green-300" 
+                ? "" 
                 : "bg-gray-100 border-gray-300"
             }`}
+            style={
+              status === "Online"
+                ? {
+                    backgroundColor: RESTAURANT_THEME.softBackground,
+                    borderColor: RESTAURANT_THEME.softBorder,
+                  }
+                : undefined
+            }
           >
             <span className={`w-1.5 h-1.5 rounded-full ${
-              status === "Online" ? "bg-green-500" : "bg-gray-500"
-            }`}></span>
+              status === "Online" ? "" : "bg-gray-500"
+            }`}
+            style={status === "Online" ? { backgroundColor: RESTAURANT_THEME.brand } : undefined}
+            ></span>
             <span className={`text-sm font-medium ${
-              status === "Online" ? "text-green-700" : "text-gray-700"
-            }`}>
+              status === "Online" ? "" : "text-gray-700"
+            }`}
+            style={status === "Online" ? { color: RESTAURANT_THEME.softText } : undefined}
+            >
               {status}
             </span>
             <ChevronRight className={`w-4 h-4 ${
-              status === "Online" ? "text-green-700" : "text-gray-700"
-            }`} />
+              status === "Online" ? "" : "text-gray-700"
+            }`}
+            style={status === "Online" ? { color: RESTAURANT_THEME.softText } : undefined}
+            />
           </button>
         )}
 

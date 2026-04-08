@@ -28,6 +28,7 @@ import RestaurantNavbar from "@food/components/restaurant/RestaurantNavbar";
 import notificationSound from "@food/assets/audio/alert.mp3";
 import { restaurantAPI, diningAPI } from "@food/api";
 import { useRestaurantNotifications } from "@food/hooks/useRestaurantNotifications";
+import { RESTAURANT_THEME } from "@food/constants/restaurantTheme";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import ResendNotificationButton from "@food/components/restaurant/ResendNotificationButton";
@@ -1893,7 +1894,8 @@ export default function OrdersMain() {
                 {isActive && (
                   <motion.div
                     layoutId="activeFilterBackground"
-                    className="absolute inset-0 bg-black rounded-full -z-10"
+                    className="absolute inset-0 rounded-full -z-10"
+                    style={{ backgroundColor: RESTAURANT_THEME.brand }}
                     initial={false}
                     transition={{
                       type: "spring",

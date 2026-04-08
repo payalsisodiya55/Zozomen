@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, X, ShoppingBag, MapPin, Clock, IndianRupee } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { RESTAURANT_THEME } from '@food/constants/restaurantTheme';
 
 /**
  * New Order Notification Component
@@ -29,9 +30,9 @@ export default function NewOrderNotification({ order, onClose, onViewOrder }) {
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
         className="fixed top-4 left-4 right-4 z-50 max-w-md mx-auto"
       >
-        <div className="bg-white rounded-2xl shadow-2xl border-2 border-green-500 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-2xl border-2 overflow-hidden" style={{ borderColor: RESTAURANT_THEME.brand }}>
           {/* Header with bell icon */}
-          <div className="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4 flex items-center justify-between">
+          <div className="px-6 py-4 flex items-center justify-between" style={{ backgroundColor: RESTAURANT_THEME.brand }}>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
                 <Bell className="w-6 h-6 text-white animate-pulse" />
@@ -53,12 +54,12 @@ export default function NewOrderNotification({ order, onClose, onViewOrder }) {
           <div className="p-6">
             <div className="space-y-4">
               {/* Total Amount */}
-              <div className="flex items-center justify-between p-4 bg-green-50 rounded-xl">
+              <div className="flex items-center justify-between p-4 rounded-xl" style={{ backgroundColor: RESTAURANT_THEME.softBackground }}>
                 <div className="flex items-center gap-2">
-                  <IndianRupee className="w-5 h-5 text-green-600" />
+                  <IndianRupee className="w-5 h-5" style={{ color: RESTAURANT_THEME.brand }} />
                   <span className="text-gray-600 font-medium">Total Amount</span>
                 </div>
-                <span className="text-2xl font-bold text-green-600">
+                <span className="text-2xl font-bold" style={{ color: RESTAURANT_THEME.brand }}>
                   ₹{order.total?.toFixed(2) || '0.00'}
                 </span>
               </div>
@@ -126,7 +127,8 @@ export default function NewOrderNotification({ order, onClose, onViewOrder }) {
               </button>
               <button
                 onClick={handleViewOrder}
-                className="flex-1 px-4 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-3 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                style={{ backgroundColor: RESTAURANT_THEME.brand }}
               >
                 <ShoppingBag className="w-5 h-5" />
                 View Order

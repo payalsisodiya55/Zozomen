@@ -21,6 +21,7 @@ import BottomNavOrders from "@food/components/restaurant/BottomNavOrders"
 import { Switch } from "@food/components/ui/switch"
 import { useNavigate } from "react-router-dom"
 import { restaurantAPI, uploadAPI } from "@food/api"
+import { RESTAURANT_THEME } from "@food/constants/restaurantTheme"
 import { toast } from "sonner"
 const debugLog = (...args) => {}
 const debugWarn = (...args) => {}
@@ -714,11 +715,12 @@ function SimpleCalendar({ selectedDate, onDateSelect, isOpen, onClose }) {
                     className={`h-10 text-sm rounded transition-colors ${!isCurrent
                         ? 'text-gray-300'
                         : isSelectedDate
-                          ? 'bg-black text-white'
+                          ? 'text-white'
                           : isTodayDate
                             ? 'bg-gray-100 text-black font-semibold'
                             : 'text-gray-700 hover:bg-gray-100'
                       }`}
+                    style={isSelectedDate ? { backgroundColor: RESTAURANT_THEME.brand } : undefined}
                   >
                     {date.getDate()}
                   </button>
@@ -1784,9 +1786,10 @@ export default function Inventory() {
             onClick={() => setActiveTab("all-items")}
             className={`relative overflow-hidden rounded-[24px] border px-5 py-4 text-sm font-semibold whitespace-nowrap ${
               activeTab === "all-items"
-                ? "border-slate-950 text-white shadow-[0_18px_32px_-24px_rgba(15,23,42,0.8)]"
+                ? "text-white shadow-[0_18px_32px_-24px_rgba(15,23,42,0.8)]"
                 : "border-white/80 bg-white/80 text-slate-700 shadow-[0_16px_40px_-34px_rgba(15,23,42,0.4)]"
             }`}
+            style={activeTab === "all-items" ? { borderColor: RESTAURANT_THEME.brand } : undefined}
             animate={{
               scale: activeTab === "all-items" ? 1.02 : 1,
             }}
@@ -1795,7 +1798,8 @@ export default function Inventory() {
             {activeTab === "all-items" && (
               <motion.div
                 layoutId="activeTabBackground"
-                className="absolute inset-0 rounded-[24px] bg-slate-950 -z-10"
+                className="absolute inset-0 rounded-[24px] -z-10"
+                style={{ backgroundColor: RESTAURANT_THEME.brand }}
                 initial={false}
                 transition={{
                   type: "spring",
@@ -1818,9 +1822,10 @@ export default function Inventory() {
             onClick={() => setActiveTab("add-ons")}
             className={`relative overflow-hidden rounded-[24px] border px-5 py-4 text-sm font-semibold whitespace-nowrap ${
               activeTab === "add-ons"
-                ? "border-slate-950 text-white shadow-[0_18px_32px_-24px_rgba(15,23,42,0.8)]"
+                ? "text-white shadow-[0_18px_32px_-24px_rgba(15,23,42,0.8)]"
                 : "border-white/80 bg-white/80 text-slate-700 shadow-[0_16px_40px_-34px_rgba(15,23,42,0.4)]"
             }`}
+            style={activeTab === "add-ons" ? { borderColor: RESTAURANT_THEME.brand } : undefined}
             animate={{
               scale: activeTab === "add-ons" ? 1.02 : 1,
             }}
@@ -1829,7 +1834,8 @@ export default function Inventory() {
             {activeTab === "add-ons" && (
               <motion.div
                 layoutId="activeTabBackground"
-                className="absolute inset-0 rounded-[24px] bg-slate-950 -z-10"
+                className="absolute inset-0 rounded-[24px] -z-10"
+                style={{ backgroundColor: RESTAURANT_THEME.brand }}
                 initial={false}
                 transition={{
                   type: "spring",
@@ -1972,15 +1978,15 @@ export default function Inventory() {
                 <SlidersHorizontal className="w-4 h-4 text-slate-700" />
                 <span>Filters</span>
                 {selectedFilter !== "all" && (
-                  <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-slate-950" />
+                  <span className="absolute top-2 right-2 w-2 h-2 rounded-full" style={{ backgroundColor: RESTAURANT_THEME.brand }} />
                 )}
               </button>
 
               {activeTab === "add-ons" && (
                 <button
                   onClick={() => setIsAddAddonOpen((v) => !v)}
-                  className="h-12 rounded-[20px] bg-slate-950 px-4 text-sm font-semibold text-white shadow-[0_18px_32px_-24px_rgba(15,23,42,0.85)] transition-colors hover:bg-slate-800"
-                  style={{ minWidth: "128px" }}
+                  className="h-12 rounded-[20px] px-4 text-sm font-semibold text-white shadow-[0_18px_32px_-24px_rgba(15,23,42,0.85)] transition-colors hover:opacity-90"
+                  style={{ minWidth: "128px", backgroundColor: RESTAURANT_THEME.brand }}
                 >
                   {isAddAddonOpen ? "Close" : "Add Add-on"}
                 </button>
@@ -2001,9 +2007,10 @@ export default function Inventory() {
                     onClick={() => setSelectedFilter(option.value)}
                     className={`shrink-0 rounded-full border px-3.5 py-2 text-xs font-semibold transition-colors ${
                       isActive
-                        ? "border-slate-950 bg-slate-950 text-white shadow-[0_14px_28px_-24px_rgba(15,23,42,0.9)]"
+                        ? "text-white shadow-[0_14px_28px_-24px_rgba(15,23,42,0.9)]"
                         : "border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white"
                     }`}
+                    style={isActive ? { borderColor: RESTAURANT_THEME.brand, backgroundColor: RESTAURANT_THEME.brand } : undefined}
                   >
                     <span>{option.label}</span>
                     <span className={`ml-2 inline-flex min-w-[20px] items-center justify-center rounded-full px-1.5 py-0.5 text-[11px] ${
@@ -2031,7 +2038,8 @@ export default function Inventory() {
                         type="text"
                         value={addonName}
                         onChange={(e) => setAddonName(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[var(--restaurant-brand)] focus:outline-none"
+                        style={{ "--restaurant-brand": RESTAURANT_THEME.brand }}
                         placeholder="e.g., Coke, Chips"
                       />
                     </div>
@@ -2040,7 +2048,8 @@ export default function Inventory() {
                       <textarea
                         value={addonDescription}
                         onChange={(e) => setAddonDescription(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:outline-none resize-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[var(--restaurant-brand)] focus:outline-none resize-none"
+                        style={{ "--restaurant-brand": RESTAURANT_THEME.brand }}
                         rows={3}
                         placeholder="Describe the add-on..."
                       />
@@ -2051,7 +2060,8 @@ export default function Inventory() {
                         type="number"
                         value={addonPrice}
                         onChange={(e) => setAddonPrice(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[var(--restaurant-brand)] focus:outline-none"
+                        style={{ "--restaurant-brand": RESTAURANT_THEME.brand }}
                         min="0"
                         step="0.01"
                         placeholder="0.00"
@@ -2106,7 +2116,8 @@ export default function Inventory() {
                         type="button"
                         onClick={handleSaveAddon}
                         disabled={savingAddon}
-                        className="px-4 py-2 bg-black text-white rounded-md text-sm font-medium hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                        className="px-4 py-2 text-white rounded-md text-sm font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                        style={{ backgroundColor: RESTAURANT_THEME.brand }}
                       >
                         {savingAddon && <Loader2 className="h-4 w-4 animate-spin" />}
                         <span>{savingAddon ? "Saving..." : "Submit for approval"}</span>
@@ -2470,7 +2481,8 @@ export default function Inventory() {
                             name="filter"
                             checked={selectedFilter === option.value}
                             onChange={() => setSelectedFilter(option.value)}
-                            className="w-5 h-5 text-black border-gray-300 focus:ring-black"
+                            className="w-5 h-5 border-gray-300 focus:ring-[var(--restaurant-brand)]"
+                            style={{ accentColor: RESTAURANT_THEME.brand, "--restaurant-brand": RESTAURANT_THEME.brand }}
                           />
                           <span className="text-base text-gray-900">{option.label}</span>
                         </div>
@@ -2493,7 +2505,8 @@ export default function Inventory() {
                   )}
                   <button
                     onClick={handleFilterApply}
-                    className={`${selectedFilter !== "all" ? 'flex-1' : 'w-full'} bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors`}
+                    className={`${selectedFilter !== "all" ? 'flex-1' : 'w-full'} text-white py-3 rounded-lg font-medium hover:opacity-90 transition-colors`}
+                    style={{ backgroundColor: RESTAURANT_THEME.brand }}
                   >
                     Apply
                   </button>
@@ -2576,8 +2589,8 @@ export default function Inventory() {
                         name="outOfStockOption"
                         checked={selectedOption === "specific-time"}
                         onChange={() => setSelectedOption("specific-time")}
-                        style={{ accentColor: "#000000" }}
-                        className="ml-auto w-5 h-5 !text-black !border-gray-300 !bg-black !focus:ring-black"
+                        style={{ accentColor: RESTAURANT_THEME.brand, "--restaurant-brand": RESTAURANT_THEME.brand }}
+                        className="ml-auto w-5 h-5 !border-gray-300 !focus:ring-[var(--restaurant-brand)]"
                       />
                     </div>
                   </label>
@@ -2592,8 +2605,8 @@ export default function Inventory() {
                         name="outOfStockOption"
                         checked={selectedOption === "next-business-day"}
                         onChange={() => setSelectedOption("next-business-day")}
-                        style={{ accentColor: "#000000" }}
-                        className="ml-auto w-5 h-5 !text-black !border-gray-300 !bg-black !focus:ring-black"
+                        style={{ accentColor: RESTAURANT_THEME.brand, "--restaurant-brand": RESTAURANT_THEME.brand }}
+                        className="ml-auto w-5 h-5 !border-gray-300 !focus:ring-[var(--restaurant-brand)]"
                       />
                     </div>
                   </label>
@@ -2608,8 +2621,8 @@ export default function Inventory() {
                         name="outOfStockOption"
                         checked={selectedOption === "custom-date-time"}
                         onChange={() => setSelectedOption("custom-date-time")}
-                        style={{ accentColor: "#000000" }}
-                        className="ml-auto w-5 h-5 text-black border-gray-300 focus:ring-black"
+                        style={{ accentColor: RESTAURANT_THEME.brand, "--restaurant-brand": RESTAURANT_THEME.brand }}
+                        className="ml-auto w-5 h-5 border-gray-300 focus:ring-[var(--restaurant-brand)]"
                       />
                     </div>
                   </label>
@@ -2643,8 +2656,8 @@ export default function Inventory() {
                           name="outOfStockOption"
                           checked={selectedOption === "manual"}
                           onChange={() => setSelectedOption("manual")}
-                          style={{ accentColor: "#000000" }}
-                          className="ml-auto w-5 h-5 !text-black !border-gray-300 !bg-black !focus:ring-black"
+                          style={{ accentColor: RESTAURANT_THEME.brand, "--restaurant-brand": RESTAURANT_THEME.brand }}
+                          className="ml-auto w-5 h-5 !border-gray-300 !focus:ring-[var(--restaurant-brand)]"
                         />
                       </div>
                       <p className="text-sm text-gray-500">
@@ -2664,7 +2677,8 @@ export default function Inventory() {
                   </button>
                   <button
                     onClick={handleToggleConfirm}
-                    className="flex-1 bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                    className="flex-1 text-white py-3 rounded-lg font-medium hover:opacity-90 transition-colors"
+                    style={{ backgroundColor: RESTAURANT_THEME.brand }}
                   >
                     Confirm
                   </button>
@@ -2741,7 +2755,8 @@ export default function Inventory() {
           <motion.button
             whileTap={{ scale: 0.96 }}
             onClick={() => setIsAddPopupOpen(true)}
-            className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-[0_22px_40px_-24px_rgba(15,23,42,0.85)]"
+            className="rounded-full px-5 py-3 text-sm font-semibold text-white shadow-[0_22px_40px_-24px_rgba(15,23,42,0.85)]"
+            style={{ backgroundColor: RESTAURANT_THEME.brand }}
           >
             + Add item
           </motion.button>

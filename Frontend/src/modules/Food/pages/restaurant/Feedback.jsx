@@ -5,6 +5,7 @@ import { Bell, HelpCircle, Menu, Search, SlidersHorizontal, Calendar, ChevronLef
 import { DateRangeCalendar } from "@food/components/ui/date-range-calendar"
 import BottomNavOrders from "@food/components/restaurant/BottomNavOrders"
 import { restaurantAPI } from "@food/api"
+import { RESTAURANT_THEME } from "@food/constants/restaurantTheme"
 
 const debugLog = (...args) => {}
 const debugWarn = (...args) => {}
@@ -428,8 +429,9 @@ export default function Feedback() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
-                activeTab === tab.id ? "bg-black text-white" : "bg-white text-gray-600 border border-gray-200"
+                activeTab === tab.id ? "text-white" : "bg-white text-gray-600 border border-gray-200"
               }`}
+              style={activeTab === tab.id ? { backgroundColor: RESTAURANT_THEME.brand } : undefined}
             >
               {tab.label}
             </button>
@@ -520,7 +522,10 @@ export default function Feedback() {
                   <div className="flex items-center gap-3">
                     <img src={review.userImage} className="w-8 h-8 rounded-full border border-gray-100" />
                     <p className="font-bold text-gray-900 text-sm">{review.userName}</p>
-                    <div className="ml-auto flex items-center gap-1 bg-green-600 text-white px-1.5 py-0.5 rounded text-[10px] font-bold">
+                    <div
+                      className="ml-auto flex items-center gap-1 text-white px-1.5 py-0.5 rounded text-[10px] font-bold"
+                      style={{ backgroundColor: RESTAURANT_THEME.brand }}
+                    >
                       {review.rating} <Star className="w-2 h-2 fill-current" />
                     </div>
                   </div>
